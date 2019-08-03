@@ -13,6 +13,14 @@ function HookMouse(){
   useEffect(() => {
     console.log("useEffect called");
     window.addEventListener("mousemove", logMousePosition);
+
+    //componentWillUnmount() lifecycle method equivalent
+    //for useEffect given below
+    return() => {
+      console.log("Component unmounting started...");
+      window.removeEventListener("mousemove", logMousePosition);
+      console.log("Component unmounted successfully.");
+    }
   }, []);
 
   return(
